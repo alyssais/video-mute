@@ -15,22 +15,21 @@ var processFiles = function() {
     var buffer = e.target.result;
     var data = new Uint8Array(buffer);
     
-    console.log("running ffmpeg");
     var result = ffmpeg_run({
       arguments: [
-        "-i", "pickup1.m4v",
+        "-i", file.name,
         "-vcodec", "copy",
         "-an",
-        "output.m4v"
+        file.name // doesn't matter as long as extension is the same
       ],
-      files: [{data: data, name: "pickup1.m4v"}]
+      files: [{data: data, name: file.name}]
     });
-    var blob = new Blob([result[0].data], {type: "video/mp4"});
+    var blob = new Blob([result[0].data], {type: file.type});
     message.innerHTML = "finished converting";
     var a = document.createElement("a");
     a.innerHTML = "download";
     a.href = URL.createObjectURL(blob);
-    a.download = true;
+    a.download = file.name;
     document.body.appendChild(a);
   };
   

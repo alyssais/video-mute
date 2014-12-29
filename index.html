@@ -6,8 +6,9 @@
   </head>
   <body>
     
+    <noscript><div>You need JavaScript to use this.</div></noscript>
     <div><input type="file" id="video-input" hidden></div>
-    <p id="loading-message">ffmpeg-asm is loading. This could take a while. Video will be processed when it loads.</p>
+    <p id="loading-message" hidden>ffmpeg-asm is loading. This could take a while. Video will be processed when it loads.</p>
 
     <script src="videoconverter.js/build/ffmpeg.js" id="ffmpeg-script" defer async></script>
     <script src="main.js"></script>
